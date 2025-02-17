@@ -107,41 +107,23 @@ def backup():
 
     # Resumen de la configuración
     print()
-    print(f"{BOLD}{CYAN}-= Configuration Summary =-{RESET}")
+    print(f"{BOLD}-= Configuration Summary =-{RESET}")
     print(f"{BOLD} Source Directory:{RESET} {YELLOW}{', '.join(INCLUDE_PATHS)}{RESET}")
     print(f"{BOLD} Excluded Directories:{RESET} {', '.join(EXCLUDE_PATHS) if EXCLUDE_PATHS else 'None'}")
     print(f"{BOLD} Destination Server:{RESET} {GREEN}{USER}@{SERVER}{RESET}")
     print(f"{BOLD} Destination Folder:{RESET} {FOLDER}")
     print("-" * 40)
-    input(f"{CYAN} Press Enter to continue...{RESET}\n")
+    input(f" Press Enter to continue...\n")
 
     run_rsync(destination)
 
 
-
-def banner():
-    os.system('clear')
-
-    print('8888888b.           888              .d8888b.                         88888888888                888')
-    print('888  "Y88b          888             d88P  Y88b                            888                    888')
-    print('888    888          888             Y88b.                                 888                    888')
-    print('888    888  8888b.  888888  8888b.   "Y888b.   888  888 88888b.   .d8888b 888   .d88b.   .d88b.  888')
-    print('888    888     "88b 888        "88b     "Y88b. 888  888 888 "88b d88P"    888  d88""88b d88""88b 888')
-    print('888    888 .d888888 888    .d888888       "888 888  888 888  888 888      888  888  888 888  888 888')
-    print('888  .d88P 888  888 Y88b.  888  888 Y88b  d88P Y88b 888 888  888 Y88b.    888  Y88..88P Y88..88P 888')
-    print('8888888P"  "Y888888  "Y888 "Y888888  "Y8888P"   "Y88888 888  888  "Y8888P 888   "Y88P"   "Y88P"  888')
-    print('                                                    888                                             ')
-    print('                                               Y8b d88P                                             ')
-    print('                                                "Y88P"                                              ')
-    print()
-
-
-
 def menu():
+    os.system("clear")
+    print("-= DataSyncTool =-")
     print(" 1. Backup")
     print(" 2. Restore")
-    print("------------")
-
+    print("-------------")
     opcion = input("Select mode: ")
 
     if opcion == "1":
@@ -157,16 +139,13 @@ def main():
     args = parser.parse_args()
 
     if args.mode == "backup":
-        banner()
         print("\n-- Backup mode  --")
         backup()
 
     elif args.mode == "restore":
-        banner()
         print("\n-- Restore mode  --")
 
     else:
-        banner()
         menu()
 
 
